@@ -7,6 +7,7 @@ class Login ( username : String, password : CharArray){
 
     var authentication : PasswordAuthentication = PasswordAuthentication(username, password)
 
+    fun signUpAndLogIn() {
 
-
+    }
 }

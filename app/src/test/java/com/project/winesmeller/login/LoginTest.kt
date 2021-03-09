@@ -1,17 +1,26 @@
 package com.project.winesmeller.login
 
-import junit.framework.TestCase
-import org.junit.Assert
+import junit.framework.Assert.assertEquals
 import org.junit.Test
+import org.mockito.ArgumentMatchers.any
 import java.net.PasswordAuthentication
 
-class LoginTest : TestCase() {
+class LoginTest {
 
     @Test
-    fun loginWithValidUserAndPasswordTest() {
-        val authentication : PasswordAuthentication = PasswordAuthentication("pepe", "password" as CharArray)
+    fun loginWithValidUserTest() {
+        val authentication = PasswordAuthentication("pepe", "1234".toCharArray())
+        assertEquals("pepe", authentication.userName)
+    }
 
-        assertEquals("Nombre no es el correcto","pepe", authentication.userName)
+    @Test
+    fun loginWithValidPasswordTest() {
+        val password = "1234".toCharArray()
+        val authentication = PasswordAuthentication("pepe", password)
+
+        for ((index, value ) in password.withIndex()){
+            assertEquals(value, authentication.password[index])
+        }
     }
 
 }

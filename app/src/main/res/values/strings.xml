@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">WineSmeller</string>
+
+    // EditTextHints - etHint
+    <string name="etHint_email">Email</string>
+    <string name="etHint_password">Contraseña</string>
+
+    // TextButton - tButton
+    <string name="tButton_signUpEnter">Regístrate aquí!</string>
+    <string name="tButton_forgottenPassword">¿Has olvidado tu contraseña?</string>
+    <string name="tButton_login">Acceder</string>
+
+    // TextView - tv
+    <string name="tv_signUpCuestion">¿No estás registrado?</string>
+
+    // TextCheckBox - tCheckBox
+    <string name="tCheckBox_savingCredentials">Guardar sesión</string>
+
+    // Descriptions
+    <string name="description_WS_loginScreen">Icono WS para animación en pantalla de login</string>
+    <string name="description_WINESMELLER_loginScreen">Título WINESMELLER para animación en pantalla de login</string>
 </resources>
