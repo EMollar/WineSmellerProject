@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_board"
+            android:icon="@drawable/ic_menu_board"
+            android:title="@string/menu_board" />
+        <item
+            android:id="@+id/nav_addWine"
+            android:icon="@drawable/ic_menu_wine"
+            android:title="@string/menu_addWine" />
+        <item
+            android:id="@+id/nav_myWinery"
+            android:icon="@drawable/ic_menu_yourwinery"
+            android:title="@string/menu_yourWinery" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_menu_searcher"
+            android:title="@string/menu_search" />
+
+        <item
+            android:id="@+id/nav_foro"
+            android:icon="@drawable/ic_menu_foro"
+            android:title="@string/menu_foro" />
+
+        <item
+            android:id="@+id/nav_scanner"
+            android:icon="@drawable/ic_menu_scanner"
+            android:title="@string/menu_scanner" />
+
+        <item
+            android:id="@+id/nav_cataNotes"
+            android:icon="@drawable/ic_menu_catanotes"
+            android:title="@string/menu_cataNotes" />
+
+        <!-- Sección de configuración -->
+        <!--item
+            android:id="@+id/configuration_section"
+            android:title="@string/title_optionMenu_settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_log_out"
+                    android:icon="@android:drawable/ic_lock_power_off"
+                    android:title="@string/title_optionMenu_closeSession" />
+            </menu>
+        </item-->
+    </group>
+
+</menu>

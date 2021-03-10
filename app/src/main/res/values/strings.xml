@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">WineSmeller</string>
+    // App y activities
+    <string name="app_name">Wine Smeller</string>
+    <string name="activityTitle_auth">Autenticación</string>
+    <string name="activityTitle_signUp">Regístrate</string>
+    <string name="activityTitle_passwordForgotten">Recupera tu contraseña</string>
+    <string name="activityTitle_mainMenu">Menú Principal</string>
 
     // EditTextHints - etHint
     <string name="etHint_email">Email</string>
@@ -19,4 +24,20 @@
     // Descriptions
     <string name="description_WS_loginScreen">Icono WS para animación en pantalla de login</string>
     <string name="description_WINESMELLER_loginScreen">Título WINESMELLER para animación en pantalla de login</string>
+    <string name="description_WINESMELLER_mainMenuScreen_button1">Botón "+" para su posterior uso</string>
+
+    // Acciones del menú
+    <string name="title_optionMenu_settings">Ajustes</string>
+    <string name="title_optionMenu_closeSession">Cerrar sesión</string>
+    <string name="menu_board">Cartel</string>
+    <string name="menu_addWine">Uno Más</string>
+    <string name="menu_yourWinery">Tu Bodega</string>
+    <string name="menu_search">Buscador</string>
+    <string name="menu_foro">Foro</string>
+    <string name="menu_scanner">Escáner</string>
+    <string name="menu_cataNotes">Nota de catas</string>
+
+    // Otros
+    <string name="nombrePerfil">Cristiano Ronaldo</string>
+    <string name="emailPerfil">winesmeller@gmail.com</string>
 </resources>
