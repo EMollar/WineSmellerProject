@@ -2,21 +2,31 @@
     // App y activities
     <string name="app_name">Wine Smeller</string>
     <string name="activityTitle_auth">Autenticación</string>
-    <string name="activityTitle_signUp">Regístrate</string>
-    <string name="activityTitle_passwordForgotten">Recupera tu contraseña</string>
+    <string name="activityTitle_signUp">Nuevo Registro</string>
+    <string name="activityTitle_passwordForgotten">Recupere su contraseña</string>
     <string name="activityTitle_mainMenu">Menú Principal</string>
 
     // EditTextHints - etHint
     <string name="etHint_email">Email</string>
     <string name="etHint_password">Contraseña</string>
+    <string name="etHint_newPassword">Nueva contraseña</string>
+    <string name="etHint_repeatNewPassword">Confirme contraseña</string>
+    <string name="etHint_barToCode">_</string>
 
     // TextButton - tButton
-    <string name="tButton_signUpEnter">Regístrate aquí!</string>
-    <string name="tButton_forgottenPassword">¿Has olvidado tu contraseña?</string>
+    <string name="tButton_signUpEnter">Regístrese aquí!</string>
+    <string name="tButton_forgottenPassword">¿Ha olvidado su contraseña?</string>
     <string name="tButton_login">Acceder</string>
+    <string name="tButton_sendCode">Enviar código</string>
+    <string name="tButton_validCode">Validar código</string>
+    <string name="tButton_confirm">Confirmar</string>
 
     // TextView - tv
-    <string name="tv_signUpCuestion">¿No estás registrado?</string>
+    <string name="tv_signUpCuestion">¿No está registrado?</string>
+    <string name="tv_enterEmail">Introduzca su correo:</string>
+    <string name="tv_codeSend">Se le ha enviado el código de recuperación de contraseña a su correo.</string>
+    <string name="tv_newPassword">Introduzca su nueva contraseña:</string>
+    <string name="tv_confirmNewPassword">Confirme su nueva contraseña:</string>
 
     // TextCheckBox - tCheckBox
     <string name="tCheckBox_savingCredentials">Guardar sesión</string>
@@ -25,6 +35,7 @@
     <string name="description_WS_loginScreen">Icono WS para animación en pantalla de login</string>
     <string name="description_WINESMELLER_loginScreen">Título WINESMELLER para animación en pantalla de login</string>
     <string name="description_WINESMELLER_mainMenuScreen_button1">Botón "+" para su posterior uso</string>
+    <string name="description_forgottenPassword_spacesCode">Utiliza para crear espacios entre imágenes</string>
 
     // Acciones del menú
     <string name="title_optionMenu_settings">Ajustes</string>

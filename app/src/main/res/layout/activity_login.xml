@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_auth"
+    android:orientation="vertical"
     tools:context=".activities.login.LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -22,149 +22,159 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="#FFFFFF" />
 
-    <ImageView
-        android:id="@+id/letters_text"
-        android:layout_width="92dp"
-        android:layout_height="109dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/description_WS_loginScreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar_auth"
-        app:layout_constraintVertical_bias="0.018"
-        app:srcCompat="@drawable/wine_smeller_letters_edit" />
+        tools:ignore="MissingConstraints">
 
-    <ImageView
-        android:id="@+id/title_text"
-        android:layout_width="211dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/description_WINESMELLER_loginScreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/letters_text"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/wine_smeller_title_edit" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/my_toolbar_auth"
+            tools:ignore="MissingConstraints">
 
-    <EditText
-        android:id="@+id/idEditText_Email"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="@string/etHint_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text"
-        app:layout_constraintVertical_bias="0.032"
-        tools:ignore="TextFields"
-        android:autofillHints="" />
+            <ImageView
+                android:id="@+id/letters_text"
+                android:layout_width="wrap_content"
+                android:layout_height="78dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/description_WS_loginScreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/my_toolbar_auth"
+                app:layout_constraintVertical_bias="0.018"
+                app:srcCompat="@drawable/wine_smeller_letters_edit" />
 
-    <EditText
-        android:id="@+id/idEditText_Password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="@string/etHint_password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idEditText_Email"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="" />
+            <ImageView
+                android:id="@+id/title_text"
+                android:layout_width="199dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/description_WINESMELLER_loginScreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/letters_text"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/wine_smeller_title_edit" />
 
-    <Button
-        android:id="@+id/idButton_Login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/pushbutton_login"
-        android:text="@string/tButton_login"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idEditText_Password"
-        app:layout_constraintVertical_bias="0.0" />
+            <EditText
+                android:id="@+id/idEditText_Email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/etHint_email"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                app:layout_constraintVertical_bias="0.032"
+                tools:ignore="TextFields" />
 
-    <TextView
-        android:id="@+id/tvForgottenPasswordCuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/orange"
-        android:layout_marginTop="8dp"
-        android:text="@string/tButton_forgottenPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idButton_Login"
-        app:layout_constraintVertical_bias="0.0"
-        android:clickable="true"
-        android:focusable="true"  />
+            <EditText
+                android:id="@+id/idEditText_Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/etHint_password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idEditText_Email"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <CheckBox
-        android:id="@+id/idCheckBox_SaveCredentials"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/tCheckBox_savingCredentials"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgottenPasswordCuestion"
-        app:layout_constraintVertical_bias="0.046" />
+            <Button
+                android:id="@+id/idButton_Login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/pushbutton_login"
+                android:text="@string/tButton_login"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idEditText_Password"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/tvLoginCuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/tv_signUpCuestion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idCheckBox_SaveCredentials"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/tvForgottenPasswordCuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/tButton_forgottenPassword"
+                android:textColor="@color/orange" />
 
-    <TextView
-        android:id="@+id/tvSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/orange"
-        android:text="@string/tButton_signUpEnter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toEndOf="@+id/tvLoginCuestion"
-        app:layout_constraintTop_toBottomOf="@+id/idCheckBox_SaveCredentials"
-        app:layout_constraintVertical_bias="0.0"
-        android:clickable="true"
-        android:focusable="true" />
+            <CheckBox
+                android:id="@+id/idCheckBox_SaveCredentials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/tCheckBox_savingCredentials"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvForgottenPasswordCuestion"
+                app:layout_constraintVertical_bias="0.046" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvLoginCuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/tv_signUpCuestion" />
+
+                <TextView
+                    android:id="@+id/tvSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/tButton_signUpEnter"
+                    android:textColor="@color/orange" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

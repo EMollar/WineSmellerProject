@@ -10,5 +10,6 @@ class PasswordForgottenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_password_forgotten)
         setSupportActionBar(findViewById(R.id.my_toolbar_password_forgotten))
         setTitle(R.string.activityTitle_passwordForgotten)
+        window.setBackgroundDrawableResource(R.drawable.background_auth)
     }
 }

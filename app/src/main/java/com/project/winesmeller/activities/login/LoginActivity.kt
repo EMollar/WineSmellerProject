@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
+        window.setBackgroundDrawableResource(R.drawable.background_auth)
 
 
         /**
