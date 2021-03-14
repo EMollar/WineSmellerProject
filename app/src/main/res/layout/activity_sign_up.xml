@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_auth"
     tools:context=".activities.login.SignUpActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,5 +20,258 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="#FFFFFF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar_signup"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/my_toolbar_password_forgotten">
+
+            <TextView
+                android:id="@+id/tvEnterEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/tv_enterEmail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text_size"
+                app:layout_constraintTop_toBottomOf="@+id/my_toolbar_password_forgotten" />
+
+            <EditText
+                android:id="@+id/idEditText_Email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:hint="@string/etHint_email"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:id="@+id/tvEnterPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/tv_enterPassword"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text_size"
+                app:layout_constraintTop_toBottomOf="@+id/my_toolbar_password_forgotten" />
+
+            <EditText
+                android:id="@+id/idEditText_Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:hint="@string/etHint_password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/main_text_size" />
+
+            <EditText
+                android:id="@+id/idEditText_ConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:hint="@string/etHint_repeatNewPassword"
+                android:inputType="textPassword"
+                android:textSize="@dimen/main_text_size" />
+
+            <Button
+                android:id="@+id/idButton_sendCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/pushbutton_login"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/tButton_confirm"
+                android:textColor="@color/white" />
+
+            <View
+                android:id="@+id/first_view"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary" />
+
+            <View
+                android:id="@+id/first_separator"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/idInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/tv_codeSendNewRegister" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idInfoText">
+
+                <ImageView
+                    android:id="@+id/space01"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1.5"
+                    android:contentDescription="@string/description_forgottenPassword_spacesCode" />
+
+                <EditText
+                    android:id="@+id/squareCode01"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/etHint_barToCode"
+                    android:inputType="text"
+                    android:maxLength="1"
+                    android:text=""
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/space02"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@string/description_forgottenPassword_spacesCode" />
+
+
+                <EditText
+                    android:id="@+id/squareCode02"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/etHint_barToCode"
+                    android:inputType="text"
+                    android:maxLength="1"
+                    android:text=""
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/space03"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@string/description_forgottenPassword_spacesCode" />
+
+                <EditText
+                    android:id="@+id/squareCode03"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/etHint_barToCode"
+                    android:inputType="text"
+                    android:maxLength="1"
+                    android:text=""
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/space04"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@string/description_forgottenPassword_spacesCode" />
+
+                <EditText
+                    android:id="@+id/squareCode04"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:alpha="0.7"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/etHint_barToCode"
+                    android:inputType="text"
+                    android:maxLength="1"
+                    android:text=""
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/space05"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1.5"
+                    android:alpha="0.7"
+                    android:contentDescription="@string/description_forgottenPassword_spacesCode" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/idButton_validCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/pushbutton_login"
+                android:isScrollContainer="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/tButton_confirm"
+                android:textColor="@color/white" />
+
+            <View
+                android:id="@+id/second_view"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary" />
+
+            <View
+                android:id="@+id/second_separator"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

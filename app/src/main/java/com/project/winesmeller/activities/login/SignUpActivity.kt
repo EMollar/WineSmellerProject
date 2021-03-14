@@ -10,5 +10,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         setSupportActionBar(findViewById(R.id.my_toolbar_signup))
         setTitle(R.string.activityTitle_signUp)
+        window.setBackgroundDrawableResource(R.drawable.background_auth)
     }
 }

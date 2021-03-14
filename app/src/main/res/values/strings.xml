@@ -25,6 +25,9 @@
     <string name="tv_signUpCuestion">¿No está registrado?</string>
     <string name="tv_enterEmail">Introduzca su correo:</string>
     <string name="tv_codeSend">Se le ha enviado el código de recuperación de contraseña a su correo.</string>
+    <string name="tv_codeSendNewRegister">Se ha enviado un código de confirmación a su correo.
+        Introduzca el código para terminar su registro.</string>
+    <string name="tv_enterPassword">Introduzca contraseña:</string>
     <string name="tv_newPassword">Introduzca su nueva contraseña:</string>
     <string name="tv_confirmNewPassword">Confirme su nueva contraseña:</string>
 
