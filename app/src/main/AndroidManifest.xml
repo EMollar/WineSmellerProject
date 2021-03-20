@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.project.winesmeller">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_wine"
@@ -10,7 +12,8 @@
         android:roundIcon="@mipmap/ic_wine_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".activities.login.LoginActivity"

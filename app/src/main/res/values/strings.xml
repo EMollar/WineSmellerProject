@@ -51,6 +51,11 @@
     <string name="menu_scanner">Escáner</string>
     <string name="menu_cataNotes">Nota de catas</string>
 
+    // Mensajes
+    <string name="toast_invalidEmail">El formato del correo no es válido</string>
+    <string name="toast_passwordAndConfirmDiff">La contraseña y su confirmación no coinciden</string>
+    <string name="toast_emailAlreadyExists">El usuario ya se está registrado en nuestra Base de Datos</string>
+
     // Otros
     <string name="nombrePerfil">Cristiano Ronaldo</string>
     <string name="emailPerfil">winesmeller@gmail.com</string>

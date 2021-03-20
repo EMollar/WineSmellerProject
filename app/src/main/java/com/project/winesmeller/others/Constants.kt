@@ -5,9 +5,10 @@ class Constants {
     companion object {
 
             // URL SERVER
-        val URL_SERVER  = "http://192.168.1.39:8080/developer"
+        val URL_SERVER  = "http://192.168.1.39/developer/"
 
             // Script names
+        val SC_CHECK_EMAIL          = "checkEmail.php"
         val SC_USER_AUTHENTICATION  = "userAuthentication.php"
         val SC_USER_LOGIN           = "userLogin.php"
         val SC_ADD_WINE             = "addWine.php"

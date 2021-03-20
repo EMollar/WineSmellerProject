@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/my_toolbar_password_forgotten" />
 
             <EditText
-                android:id="@+id/idEditText_Email"
+                android:id="@+id/idEditText_Email_Register"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="24dp"
@@ -96,7 +96,7 @@
                 android:textSize="@dimen/main_text_size" />
 
             <Button
-                android:id="@+id/idButton_sendCode"
+                android:id="@+id/idButton_sendRegisterData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -133,7 +133,7 @@
                 android:text="@string/tv_codeSendNewRegister" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/linearLayoutCodes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
