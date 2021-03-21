@@ -9,6 +9,7 @@ class Constants {
 
             // Script names
         val SC_CHECK_EMAIL          = "checkEmail.php"
+        val SC_USER_REGISTER        = "userRegister.php"
         val SC_USER_AUTHENTICATION  = "userAuthentication.php"
         val SC_USER_LOGIN           = "userLogin.php"
         val SC_ADD_WINE             = "addWine.php"

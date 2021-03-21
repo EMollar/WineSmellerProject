@@ -1,6 +1,11 @@
 package com.project.winesmeller.activities.login
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,17 +31,29 @@ class SignUpActivity : AppCompatActivity() {
     var password = ""
     var confirmPassword = ""
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         setSupportActionBar(findViewById(R.id.my_toolbar_signup))
         setTitle(R.string.activityTitle_signUp)
         window.setBackgroundDrawableResource(R.drawable.background_auth)
+        setBackBoton()
 
         elementsEnable(false)
         listenerButtons()
+    }
+
+
+
+    /**
+     *  Muestra el botón atrás en la actionBar y selección de su color
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun setBackBoton() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val upArrow : Drawable = resources.getDrawable(R.drawable.abc_ic_ab_back_material)
+        upArrow.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP)
+        getSupportActionBar()?.setHomeAsUpIndicator(upArrow)
     }
 
 
@@ -91,7 +108,7 @@ class SignUpActivity : AppCompatActivity() {
                 val codeEntered = "$code01$code02$code03$code04"
 
                 if( confirmCode == codeEntered ) {
-                    registerUserBBDD()
+                    userRegister()
                 } else {
                     Toast.makeText(this, R.string.toast_wrongCodeEntered, Toast.LENGTH_LONG).show()
                 }
@@ -126,9 +143,9 @@ class SignUpActivity : AppCompatActivity() {
                         Toast.makeText(this, R.string.toast_codeSend, Toast.LENGTH_LONG).show()
                         confirmCode = getCode()
                         sendEmail(this)
+                        elementsEnable(true)
                     }
                     bConfirmRegister.isEnabled = true
-                    elementsEnable(true)
                 },
                 { error ->
                     Log.e("ERROR", error.toString())
@@ -173,9 +190,30 @@ class SignUpActivity : AppCompatActivity() {
 
 
 
-    private fun registerUserBBDD() {
-        Toast.makeText(this, "El usuario se está registrando", Toast.LENGTH_LONG).show()
-        //TODO: registrar al usuario en BBDD
-        //TODO: una vez que se complete el registro cerrar activity y navegar a activity de login
+    private fun userRegister() {
+        var resultado       : Any   = ""
+        var message         : Any   = ""
+
+        val URL = "${Constants.URL_SERVER}${Constants.SC_USER_REGISTER}?email=$email&password=$password"
+        println("$URL************************************************")
+
+        val request : JsonObjectRequest = JsonObjectRequest( Request.Method.POST, URL, null,
+                { response ->
+                    Log.d("RESPONSE", response.toString())
+                    Toast.makeText(this, R.string.toast_registerCompleted, Toast.LENGTH_LONG).show()
+                    val jsonRQ: JSONObject = JSONObject(response.toString())
+                    resultado = jsonRQ.get("success")
+                    message = jsonRQ.get("message")
+                    val homeIntent = Intent(this, LoginActivity::class.java).apply {
+                    }
+                    startActivity(homeIntent)
+                    finish()
+                },
+                { error ->
+                    Log.e("ERROR", error.toString())
+                    Toast.makeText(this, R.string.toast_errorFailedRegistration, Toast.LENGTH_LONG).show()
+                })
+        val queue = Volley.newRequestQueue(this)
+        queue.add(request)
     }
 }

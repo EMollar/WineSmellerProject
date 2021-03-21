@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.project.winesmeller.R
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
         window.setBackgroundDrawableResource(R.drawable.background_auth)
+
 
 
         /**

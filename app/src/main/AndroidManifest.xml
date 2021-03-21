@@ -17,21 +17,25 @@
 
         <activity
             android:name=".activities.login.LoginActivity"
+            android:launchMode="singleInstance"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.MainMenuActivity"
-            android:theme="@style/AppTheme"/>
-
         <activity android:name=".activities.login.PasswordForgottenActivity"
+            android:parentActivityName=".activities.login.LoginActivity"
+            android:launchMode="singleInstance"
             android:theme="@style/AppTheme"/>
 
         <activity android:name=".activities.login.SignUpActivity"
+            android:parentActivityName=".activities.login.LoginActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".activities.MainMenuActivity"
             android:theme="@style/AppTheme"/>
 
     </application>
