@@ -8,7 +8,6 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -23,15 +22,15 @@ import com.projects.winesmeller_v10.others.Constants
 import org.json.JSONObject
 import kotlin.random.Random
 
-//TODO: en la parte de introducir los códigos, hacer que según se vaya introduciendo el código salte automáticamente al siguiente sin tener que estar pulsando sobre cada uno de los recuadros
+//TODO: modificar los métodos @Deprecated
 //TODO: evitar que se pueda spamear con envío de correos
 //TODO: límite de intentos por código
 class SignUpActivity : AppCompatActivity() {
 
-    var confirmCode : String = ""
-    var email = ""
-    var password = ""
-    var confirmPassword = ""
+    private var confirmCode : String = ""
+    private var email = ""
+    private var password = ""
+    private var confirmPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val upArrow : Drawable = resources.getDrawable(R.drawable.abc_ic_ab_back_material)
         upArrow.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP)
-        getSupportActionBar()?.setHomeAsUpIndicator(upArrow)
+        supportActionBar?.setHomeAsUpIndicator(upArrow)
     }
 
 
@@ -80,7 +79,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
 
-    fun listenerButtons() {
+    private fun listenerButtons() {
         val bConfirmRegister = findViewById<Button>(R.id.idButton_sendRegisterData)
         val bValidCode = findViewById<Button>(R.id.idButton_validCode)
         val code01 = findViewById<EditText>(R.id.squareCode01)
@@ -129,7 +128,7 @@ class SignUpActivity : AppCompatActivity() {
      * Cambiamos el focus de un recuadro a otro según se vayan introduciendo los caracteres
      * También cambia el focus en el caso de borrar el caracter
      */
-    fun changeFocus(code01: EditText, code02: EditText, code03: EditText, code04: EditText) {
+    private fun changeFocus(code01: EditText, code02: EditText, code03: EditText, code04: EditText) {
 
         code01.addTextChangedListener {
             if (code01.text.toString() != "") {
@@ -164,8 +163,8 @@ class SignUpActivity : AppCompatActivity() {
             bConfirmRegister: Button,
             code01: EditText
     ) {
-        var resultado       : Any   = ""
-        var message         : Any   = ""
+        var resultado       : Any
+        var message         : Any
 
         if (!email.contains("@") || !email.contains(".")) {
             Toast.makeText(this, R.string.toast_invalidEmail, Toast.LENGTH_LONG).show()
@@ -176,9 +175,10 @@ class SignUpActivity : AppCompatActivity() {
         } else {
             val request = JsonObjectRequest(Request.Method.GET, URL, null,
                 { response ->
-                    val jsonRQ: JSONObject = JSONObject(response.toString())
+                    val jsonRQ = JSONObject(response.toString())
                     resultado = jsonRQ.get("success")
                     message = jsonRQ.get("message")
+                    Log.d("DEBUG", "Result: $resultado / Message: $message")
                     if (jsonRQ.length() > 2) {
                         Toast.makeText(this, R.string.toast_emailAlreadyExists, Toast.LENGTH_LONG).show()
                     } else {
@@ -201,7 +201,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
 
-    fun sendEmail(context : Context) {
+    private fun sendEmail(context : Context) {
         val mEmail : String = email
         val mSubject : String = context.resources.getString(R.string.email_titleRegistrationMail)
         val mMessage : String =
@@ -210,7 +210,7 @@ class SignUpActivity : AppCompatActivity() {
                 context.resources.getString(R.string.email_bodyRegistrationMail02) +
                 context.resources.getString(R.string.email_bodyRegistrationMail03)
 
-        val javaMailAPI : JavaMailAPI =
+        val javaMailAPI =
             JavaMailAPI(
                 this,
                 mEmail,
@@ -234,19 +234,20 @@ class SignUpActivity : AppCompatActivity() {
 
 
     private fun userRegister() {
-        var resultado       : Any   = ""
-        var message         : Any   = ""
+        var resultado       : Any
+        var message         : Any
 
-        val URL = "${Constants.URL_SERVER}${Constants.SC_USER_REGISTER}?email=$email&password=$password"
-        println("$URL************************************************")
+        val url = "${Constants.URL_SERVER}${Constants.SC_USER_REGISTER}?email=$email&password=$password"
+        println("$url************************************************")
 
-        val request : JsonObjectRequest = JsonObjectRequest( Request.Method.POST, URL, null,
+        val request = JsonObjectRequest( Request.Method.POST, url, null,
                 { response ->
                     Log.d("RESPONSE", response.toString())
                     Toast.makeText(this, R.string.toast_registerCompleted, Toast.LENGTH_LONG).show()
-                    val jsonRQ: JSONObject = JSONObject(response.toString())
+                    val jsonRQ = JSONObject(response.toString())
                     resultado = jsonRQ.get("success")
                     message = jsonRQ.get("message")
+                    Log.d("DEBUG", "Result: $resultado / Message: $message")
                     val homeIntent = Intent(this, LoginActivity::class.java).apply {
                         putExtra("email", email)
                     }
