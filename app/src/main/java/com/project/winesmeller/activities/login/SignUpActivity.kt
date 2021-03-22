@@ -8,10 +8,12 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -81,6 +83,12 @@ class SignUpActivity : AppCompatActivity() {
     fun listenerButtons() {
         val bConfirmRegister = findViewById<Button>(R.id.idButton_sendRegisterData)
         val bValidCode = findViewById<Button>(R.id.idButton_validCode)
+        val code01 = findViewById<EditText>(R.id.squareCode01)
+        val code02 = findViewById<EditText>(R.id.squareCode02)
+        val code03 = findViewById<EditText>(R.id.squareCode03)
+        val code04 = findViewById<EditText>(R.id.squareCode04)
+
+        changeFocus(code01, code02, code03, code04)
 
         bConfirmRegister.setOnClickListener {
             bConfirmRegister.isEnabled = false
@@ -91,7 +99,7 @@ class SignUpActivity : AppCompatActivity() {
             println("${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email************************************************")
             checkEmailAndSendCode(
                 "${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email",
-                bConfirmRegister
+                bConfirmRegister, code01
             )
         }
 
@@ -100,12 +108,12 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.toast_voidSomeData, Toast.LENGTH_LONG).show()
                 elementsEnable(false)
             } else {
-                val code01 = findViewById<EditText>(R.id.squareCode01).text.toString()
-                val code02 = findViewById<EditText>(R.id.squareCode02).text.toString()
-                val code03 = findViewById<EditText>(R.id.squareCode03).text.toString()
-                val code04 = findViewById<EditText>(R.id.squareCode04).text.toString()
+                val textCode01 = code01.text.toString()
+                val textCode02 = code02.text.toString()
+                val textCode03 = code03.text.toString()
+                val textCode04 = code04.text.toString()
 
-                val codeEntered = "$code01$code02$code03$code04"
+                val codeEntered = "$textCode01$textCode02$textCode03$textCode04"
 
                 if( confirmCode == codeEntered ) {
                     userRegister()
@@ -117,10 +125,44 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * Cambiamos el focus de un recuadro a otro según se vayan introduciendo los caracteres
+     * También cambia el focus en el caso de borrar el caracter
+     */
+    fun changeFocus(code01: EditText, code02: EditText, code03: EditText, code04: EditText) {
+
+        code01.addTextChangedListener {
+            if (code01.text.toString() != "") {
+                code02.requestFocus()
+            }
+        }
+        code02.addTextChangedListener {
+            if (code02.text.toString() == "") {
+                code01.requestFocus()
+            } else {
+                code03.requestFocus()
+            }
+        }
+        code03.addTextChangedListener {
+            if (code03.text.toString() == "") {
+                code02.requestFocus()
+            } else {
+                code04.requestFocus()
+            }
+        }
+        code04.addTextChangedListener {
+            if (code04.text.toString() == "") {
+                code03.requestFocus()
+            }
+        }
+    }
+
+
 
     private fun checkEmailAndSendCode(
-        URL: String,
-        bConfirmRegister: Button
+            URL: String,
+            bConfirmRegister: Button,
+            code01: EditText
     ) {
         var resultado       : Any   = ""
         var message         : Any   = ""
@@ -144,6 +186,7 @@ class SignUpActivity : AppCompatActivity() {
                         confirmCode = getCode()
                         sendEmail(this)
                         elementsEnable(true)
+                        code01.requestFocus()
                     }
                     bConfirmRegister.isEnabled = true
                 },

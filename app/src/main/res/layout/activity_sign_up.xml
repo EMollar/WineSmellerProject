@@ -159,7 +159,7 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:hint="@string/etHint_barToCode"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="1"
                     android:text=""
                     android:textSize="24sp" />
@@ -182,7 +182,7 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:hint="@string/etHint_barToCode"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="1"
                     android:text=""
                     android:textSize="24sp" />
@@ -204,7 +204,7 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:hint="@string/etHint_barToCode"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="1"
                     android:text=""
                     android:textSize="24sp" />
@@ -226,7 +226,7 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:hint="@string/etHint_barToCode"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="1"
                     android:text=""
                     android:textSize="24sp" />
