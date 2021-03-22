@@ -24,13 +24,13 @@ import kotlin.random.Random
 
 //TODO: modificar los métodos @Deprecated
 //TODO: evitar que se pueda spamear con envío de correos
-//TODO: límite de intentos por código
 class SignUpActivity : AppCompatActivity() {
 
     private var confirmCode : String = ""
     private var email = ""
     private var password = ""
     private var confirmPassword = ""
+    private var numOfAttempts = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,7 +95,6 @@ class SignUpActivity : AppCompatActivity() {
             password = findViewById<EditText>(R.id.idEditText_Password).text.toString()
             confirmPassword = findViewById<EditText>(R.id.idEditText_ConfirmPassword).text.toString()
 
-            println("${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email************************************************")
             checkEmailAndSendCode(
                 "${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email",
                 bConfirmRegister, code01
@@ -118,6 +117,16 @@ class SignUpActivity : AppCompatActivity() {
                     userRegister()
                 } else {
                     Toast.makeText(this, R.string.toast_wrongCodeEntered, Toast.LENGTH_LONG).show()
+                    code01.setText("")
+                    code02.setText("")
+                    code03.setText("")
+                    code04.setText("")
+                    code01.requestFocus()
+                    numOfAttempts++
+                    if (numOfAttempts == 3) {
+                        Toast.makeText(this, R.string.toast_maxNumOfAttempts, Toast.LENGTH_LONG).show()
+                        elementsEnable(false)
+                    }
                 }
             }
         }
@@ -165,6 +174,7 @@ class SignUpActivity : AppCompatActivity() {
     ) {
         var resultado       : Any
         var message         : Any
+        val btConfirm = findViewById<Button>(R.id.idButton_sendRegisterData)
 
         if (!email.contains("@") || !email.contains(".")) {
             Toast.makeText(this, R.string.toast_invalidEmail, Toast.LENGTH_LONG).show()
@@ -186,6 +196,7 @@ class SignUpActivity : AppCompatActivity() {
                         confirmCode = getCode()
                         sendEmail(this)
                         elementsEnable(true)
+                        btConfirm.text = this.resources.getString(R.string.tButton_sendAgain)
                         code01.requestFocus()
                     }
                     bConfirmRegister.isEnabled = true
