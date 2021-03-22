@@ -205,6 +205,7 @@ class SignUpActivity : AppCompatActivity() {
                     resultado = jsonRQ.get("success")
                     message = jsonRQ.get("message")
                     val homeIntent = Intent(this, LoginActivity::class.java).apply {
+                        putExtra("email", email)
                     }
                     startActivity(homeIntent)
                     finish()

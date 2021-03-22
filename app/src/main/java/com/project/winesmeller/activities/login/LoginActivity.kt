@@ -3,6 +3,8 @@ package com.project.winesmeller.activities.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var title : ImageView
     lateinit var letters : ImageView
+    var email: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
         window.setBackgroundDrawableResource(R.drawable.background_auth)
-
-
 
         /**
          * Animación de logo y título en pantalla de login
@@ -39,6 +40,19 @@ class LoginActivity : AppCompatActivity() {
 //        Utilities.noShowNotificationBar(this.window)
 
         listenerButtons()
+    }
+
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        // Volviendo de la pantalla de registro. Introducimos automáticamente el email registrado en BBDD
+        val bundle = intent?.extras
+        email = bundle?.getString("email").toString()
+        if (email != "null"){
+            val etEmail = findViewById<EditText>(R.id.idEditText_Email)
+            etEmail.setText(email)
+        }
     }
 
 
