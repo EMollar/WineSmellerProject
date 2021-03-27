@@ -24,7 +24,6 @@ import kotlin.math.pow
 import kotlin.random.Random
 
 //TODO: modificar los métodos @Deprecated
-//TODO: evitar que se pueda spamear con envío de correos
 class SignUpActivity : AppCompatActivity() {
 
     private var confirmCode : String = ""
@@ -120,7 +119,6 @@ class SignUpActivity : AppCompatActivity() {
                     setPrefs.putInt("numAttempts", numAttempts)
                     setPrefs.apply()
                 } else {
-                    //TODO probarlo
                     Toast.makeText(this, "Inténtelo de nuevo en ${timeToWait-diffTimeInMins} minutos", Toast.LENGTH_LONG).show()
                     numAttempts -= 1
                     setPrefs.putInt("numAttempts", numAttempts)
