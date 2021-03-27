@@ -1,4 +1,4 @@
-package com.project.winesmeller.activities
+package com.project.winesmeller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

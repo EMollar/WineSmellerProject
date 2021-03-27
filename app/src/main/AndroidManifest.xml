@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".activities.login.LoginActivity"
+            android:name="com.project.winesmeller.login.LoginActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -25,17 +25,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.login.PasswordForgottenActivity"
-            android:parentActivityName=".activities.login.LoginActivity"
+        <activity android:name="com.project.winesmeller.login.PasswordForgottenActivity"
+            android:parentActivityName="com.project.winesmeller.login.LoginActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme"/>
 
-        <activity android:name=".activities.login.SignUpActivity"
-            android:parentActivityName=".activities.login.LoginActivity"
+        <activity android:name="com.project.winesmeller.login.SignUpActivity"
+            android:parentActivityName="com.project.winesmeller.login.LoginActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme"/>
 
-        <activity android:name=".activities.MainMenuActivity"
+        <activity android:name=".MainMenuActivity"
             android:theme="@style/AppTheme"/>
 
     </application>

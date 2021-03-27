@@ -1,4 +1,4 @@
-package com.project.winesmeller.activities.login
+package com.project.winesmeller.login
 
 import android.annotation.SuppressLint
 import android.graphics.Color

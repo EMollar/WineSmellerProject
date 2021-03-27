@@ -72,5 +72,6 @@
     // Otros
     <string name="nombrePerfil">Cristiano Ronaldo</string>
     <string name="emailPerfil">winesmeller@gmail.com</string>
+    <string name="preference_file_key">com.project.winesmeller.PREFERENCE_FILE_KEY</string> // Shared File
 
 </resources>

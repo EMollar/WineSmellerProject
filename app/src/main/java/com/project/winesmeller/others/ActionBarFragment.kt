@@ -1,4 +1,4 @@
-package com.project.winesmeller.activities
+package com.project.winesmeller.others
 
 import android.os.Bundle
 import android.view.*

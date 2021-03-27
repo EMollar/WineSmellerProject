@@ -1,17 +1,15 @@
-package com.project.winesmeller.activities.login
+package com.project.winesmeller.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.project.winesmeller.R
-import com.project.winesmeller.activities.MainMenuActivity
+import com.project.winesmeller.MainMenuActivity
 
 
 class LoginActivity : AppCompatActivity() {

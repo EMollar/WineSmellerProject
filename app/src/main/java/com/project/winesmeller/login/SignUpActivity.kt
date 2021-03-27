@@ -1,4 +1,4 @@
-package com.project.winesmeller.activities.login
+package com.project.winesmeller.login
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -20,6 +20,7 @@ import com.project.winesmeller.R
 import com.project.winesmeller.login.email.JavaMailAPI
 import com.projects.winesmeller_v10.others.Constants
 import org.json.JSONObject
+import kotlin.math.pow
 import kotlin.random.Random
 
 //TODO: modificar los métodos @Deprecated
@@ -87,19 +88,56 @@ class SignUpActivity : AppCompatActivity() {
         val code03 = findViewById<EditText>(R.id.squareCode03)
         val code04 = findViewById<EditText>(R.id.squareCode04)
 
+        val getPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE )
+        val setPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE ).edit()
+
         changeFocus(code01, code02, code03, code04)
 
-        bConfirmRegister.setOnClickListener {
-            bConfirmRegister.isEnabled = false
-            email = findViewById<EditText>(R.id.idEditText_Email_Register).text.toString()
-            password = findViewById<EditText>(R.id.idEditText_Password).text.toString()
-            confirmPassword = findViewById<EditText>(R.id.idEditText_ConfirmPassword).text.toString()
 
-            checkEmailAndSendCode(
-                "${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email",
-                bConfirmRegister, code01
-            )
+
+        bConfirmRegister.setOnClickListener {
+            var lastAttemptInMins = getPrefs.getLong("lastAttemptInMins", 0L)
+            val diffTimeInMins: Int
+            var numAttempts = getPrefs.getInt("numAttempts", 0)
+            numAttempts += 1
+
+            if (numAttempts > 2) {
+                val currentTimeInMins = java.util.Calendar.getInstance().timeInMillis / 60000
+                diffTimeInMins = (currentTimeInMins - lastAttemptInMins).toInt()
+
+                var timeToWait = (2.toFloat().pow(numAttempts).toInt() - 3)
+                if (timeToWait > 1440) {
+                    timeToWait = 1440 // Horas en un día
+                }
+
+                if (diffTimeInMins >= timeToWait){
+                    buttonConfirmRegisterPressed(bConfirmRegister, code01)
+                    lastAttemptInMins = java.util.Calendar.getInstance().timeInMillis / 60000
+                    if (diffTimeInMins >= 1440) {
+                        numAttempts = 0
+                    }
+                    setPrefs.putLong("lastAttemptInMins", lastAttemptInMins)
+                    setPrefs.putInt("numAttempts", numAttempts)
+                    setPrefs.apply()
+                } else {
+                    //TODO probarlo
+                    Toast.makeText(this, "Inténtelo de nuevo en ${timeToWait-diffTimeInMins} minutos", Toast.LENGTH_LONG).show()
+                    numAttempts -= 1
+                    setPrefs.putInt("numAttempts", numAttempts)
+                    setPrefs.apply()    // En un principio no haría falta volver a meter este parámetro ya que seguiría como está actualmente.
+                }
+
+            } else {
+                buttonConfirmRegisterPressed(bConfirmRegister, code01)
+
+                lastAttemptInMins = java.util.Calendar.getInstance().timeInMillis / 60000
+                setPrefs.putLong("lastAttemptInMins", lastAttemptInMins)
+                setPrefs.putInt("numAttempts", numAttempts)
+                setPrefs.apply()
+            }
         }
+
+
 
         bValidCode.setOnClickListener {
             if ( email == "" || password == "" || confirmPassword == "") {      // Este caso NO debería de ocurrir nunca
@@ -115,6 +153,8 @@ class SignUpActivity : AppCompatActivity() {
 
                 if( confirmCode == codeEntered ) {
                     userRegister()
+                    setPrefs.putInt("numAttempts", 0)
+                    setPrefs.apply()
                 } else {
                     Toast.makeText(this, R.string.toast_wrongCodeEntered, Toast.LENGTH_LONG).show()
                     code01.setText("")
@@ -131,6 +171,21 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
+    private fun buttonConfirmRegisterPressed(bConfirmRegister: Button, code01: EditText) {
+        bConfirmRegister.isEnabled = false
+        email = findViewById<EditText>(R.id.idEditText_Email_Register).text.toString()
+        password = findViewById<EditText>(R.id.idEditText_Password).text.toString()
+        confirmPassword = findViewById<EditText>(R.id.idEditText_ConfirmPassword).text.toString()
+
+        checkEmailAndSendCode(
+                "${Constants.URL_SERVER}${Constants.SC_CHECK_EMAIL}?email=$email",
+                bConfirmRegister, code01
+        )
+    }
+
 
 
     /**
