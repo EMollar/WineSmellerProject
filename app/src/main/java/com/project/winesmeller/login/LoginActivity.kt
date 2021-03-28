@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         val bundle = intent?.extras
         email = bundle?.getString("email").toString()
         if (email != "null"){
-            val etEmail = findViewById<EditText>(R.id.idEditText_Email)
+            val etEmail = findViewById<EditText>(R.id.etEmail)
             etEmail.setText(email)
         }
     }

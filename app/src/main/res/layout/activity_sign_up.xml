@@ -124,7 +124,7 @@
                 android:background="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/idInfoText"
+                android:id="@+id/tvInfoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -140,7 +140,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idInfoText">
+                app:layout_constraintTop_toBottomOf="@+id/tvInfoText">
 
                 <ImageView
                     android:id="@+id/space01"
@@ -242,7 +242,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/idButton_validCode"
+                android:id="@+id/bValidCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

@@ -56,6 +56,7 @@
     <string name="toast_invalidEmail">El formato del correo no es válido</string>
     <string name="toast_passwordAndConfirmDiff">La contraseña y su confirmación no coinciden</string>
     <string name="toast_emailAlreadyExists">El usuario ya está registrado en nuestra Base de Datos</string>
+    <string name="toast_emailNoExists">El correo indicado no se encuentra registrado en nuestra Base de Datos</string>
     <string name="toast_codeSend">Código enviado</string>
     <string name="toast_voidSomeData">Alguno de los datos no ha sido rellenado</string>
     <string name="toast_wrongCodeEntered">Código erróneo</string>
@@ -65,9 +66,11 @@
 
     // Mensajes para Correos
     <string name="email_titleRegistrationMail">Confirmación de correo electrónico</string>
+    <string name="email_titlePasswordForgotten">Cambio de contraseña</string>
     <string name="email_bodyRegistrationMail01">Gracias por elegir WineSmeller.\nPara activar su cuenta y así completar su registro es necesario que introduzca el código que se le envía en este correo.\n\n</string>
-    <string name="email_bodyRegistrationMail02">Gracias de parte del equipo de WineSmeller,\nUn saludo.\n\n</string>
-    <string name="email_bodyRegistrationMail03">Por favor, no conteste a este correo.</string>
+    <string name="email_bodyPasswordForgottenMail01">Hola,\nEl siguiente código le permitirá cambiar su contraseña:\n\n</string>
+    <string name="email_bodyGeneralMail01">Gracias de parte del equipo de WineSmeller,\nUn saludo.\n\n</string>
+    <string name="email_bodyGeneralMail02">Por favor, no conteste a este correo.</string>
 
     // Otros
     <string name="nombrePerfil">Cristiano Ronaldo</string>

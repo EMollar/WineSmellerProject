@@ -18,10 +18,10 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.project.winesmeller.R
 import com.project.winesmeller.login.email.JavaMailAPI
+import com.project.winesmeller.others.Utilities
 import com.projects.winesmeller_v10.others.Constants
 import org.json.JSONObject
 import kotlin.math.pow
-import kotlin.random.Random
 
 //TODO: modificar los métodos @Deprecated
 class SignUpActivity : AppCompatActivity() {
@@ -60,9 +60,9 @@ class SignUpActivity : AppCompatActivity() {
 
 
     fun elementsEnable(value : Boolean) {
-        val infoText = findViewById<TextView>(R.id.idInfoText)
+        val infoText = findViewById<TextView>(R.id.tvInfoText)
         val codesLayout = findViewById<LinearLayout>(R.id.linearLayoutCodes)
-        val bValidCode = findViewById<Button>(R.id.idButton_validCode)
+        val bValidCode = findViewById<Button>(R.id.bValidCode)
         val bar01 = findViewById<View>(R.id.first_view)
         val bar02 = findViewById<View>(R.id.first_separator)
         val bar03 = findViewById<View>(R.id.second_view)
@@ -81,7 +81,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun listenerButtons() {
         val bConfirmRegister = findViewById<Button>(R.id.idButton_sendRegisterData)
-        val bValidCode = findViewById<Button>(R.id.idButton_validCode)
+        val bValidCode = findViewById<Button>(R.id.bValidCode)
         val code01 = findViewById<EditText>(R.id.squareCode01)
         val code02 = findViewById<EditText>(R.id.squareCode02)
         val code03 = findViewById<EditText>(R.id.squareCode03)
@@ -246,7 +246,7 @@ class SignUpActivity : AppCompatActivity() {
                         Toast.makeText(this, R.string.toast_emailAlreadyExists, Toast.LENGTH_LONG).show()
                     } else {
                         Toast.makeText(this, R.string.toast_codeSend, Toast.LENGTH_LONG).show()
-                        confirmCode = getCode()
+                        confirmCode = Utilities.getCode4Digits()
                         sendEmail(this)
                         elementsEnable(true)
                         btConfirm.text = this.resources.getString(R.string.tButton_sendAgain)
@@ -271,8 +271,8 @@ class SignUpActivity : AppCompatActivity() {
         val mMessage : String =
                 context.resources.getString(R.string.email_bodyRegistrationMail01) +
                 "Código: ${confirmCode}\n\n" +
-                context.resources.getString(R.string.email_bodyRegistrationMail02) +
-                context.resources.getString(R.string.email_bodyRegistrationMail03)
+                context.resources.getString(R.string.email_bodyGeneralMail01) +
+                context.resources.getString(R.string.email_bodyGeneralMail02)
 
         val javaMailAPI =
             JavaMailAPI(
@@ -282,17 +282,6 @@ class SignUpActivity : AppCompatActivity() {
                 mMessage
             )
         javaMailAPI.execute()
-    }
-
-
-
-    private fun getCode() : String {
-        val code01 : String = Random.nextInt(0,9).toString()
-        val code02 : String = Random.nextInt(0,9).toString()
-        val code03 : String = Random.nextInt(0,9).toString()
-        val code04 : String = Random.nextInt(0,9).toString()
-
-        return "$code01$code02$code03$code04"
     }
 
 

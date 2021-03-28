@@ -7,6 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.navigation.NavigationView
 import com.project.winesmeller.R
+import kotlin.random.Random
 
 class Utilities {
 
@@ -15,6 +16,8 @@ class Utilities {
         //LOGS
         val LOG_INFO    = "LOG_INFO"
         val LOG_ERROR   = "LOG_ERROR"
+
+
 
         /*************************************************************************************
          * Instrucción para mostrar la pantalla completa. No se mostrará la barra de notificaciones
@@ -26,6 +29,8 @@ class Utilities {
             )
         }
 
+
+
         /*************************************************************************************
          * Instrucción para mostrar el botón de navegación al menú lateral de la app
          *************************************************************************************/
@@ -34,6 +39,23 @@ class Utilities {
             actionBar?.setDisplayHomeAsUpEnabled(b)
             actionBar?.setHomeAsUpIndicator(icMenu)
         }
+
+
+
+        /*************************************************************************************
+         * Instrucción para generar un código de 4 dígitos.
+         * Lo devuelve en formato String
+         *************************************************************************************/
+        fun getCode4Digits() : String {
+            val code01 : String = Random.nextInt(0,9).toString()
+            val code02 : String = Random.nextInt(0,9).toString()
+            val code03 : String = Random.nextInt(0,9).toString()
+            val code04 : String = Random.nextInt(0,9).toString()
+
+            return "$code01$code02$code03$code04"
+        }
+
+
 
         /*************************************************************************************
          * Listener del menú lateral
